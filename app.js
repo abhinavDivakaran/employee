@@ -40,6 +40,18 @@ app.post('/',(req,res)=>{
     });
 });
 
+app.get('/getemployeeapi/:salary',(req,res)=>{
+    var sal=req.params.salary;
+    employee.find({salary:sal},(error,data)=>{
+        if(error){
+            throw error;
+        }
+        else{
+            res.send(data);
+        }
+    });   
+});
+
 app.get('/getdata',(req,res)=>{
     result=employee.find((error,data)=>{
         if(error){
